@@ -2,50 +2,144 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
-  <title> Erol Abim Dua Sayacı</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dua Sayacı</title>
   <style>
     body {
-      font-family: Arial;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to bottom right, #1e3c72, #2a5298);
+      color: #fff;
       text-align: center;
-      padding-top: 100px;
-      background-color: #f0f8ff;
+      padding: 40px 20px;
+      margin: 0;
     }
+
     h1 {
-      font-size: 3em;
+      font-size: 2.8em;
+      margin-bottom: 10px;
     }
+
+    #counter {
+      font-size: 5em;
+      font-weight: bold;
+      margin: 20px 0;
+      color: #FFD700;
+    }
+
     button {
-      font-size: 2em;
-      padding: 20px 40px;
-      margin-top: 30px;
-      background-color: #4CAF50;
-      color: white;
+      font-size: 1.3em;
+      padding: 15px 30px;
+      margin: 10px;
       border: none;
-      border-radius: 15px;
+      border-radius: 12px;
       cursor: pointer;
+      transition: background-color 0.3s;
     }
-    button:hover {
-      background-color: #45a049;
+
+    .btn-count {
+      background-color: #00c853;
+      color: #fff;
     }
-    p {
+    .btn-count:hover {
+      background-color: #009624;
+    }
+
+    .btn-reset {
+      background-color: #d50000;
+      color: #fff;
+    }
+    .btn-reset:hover {
+      background-color: #9b0000;
+    }
+
+    .dualar {
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 30px;
+      border-radius: 15px;
+      margin-top: 50px;
+    }
+
+    .dualar h2 {
       font-size: 2em;
-      margin-top: 20px;
+      border-bottom: 2px solid #FFD700;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+    }
+
+    .dua {
+      margin-bottom: 25px;
+    }
+    .arabic {
+      font-size: 1.5em;
+      font-weight: bold;
+    }
+    .meaning {
+      font-style: italic;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2em;
+      }
+      #counter {
+        font-size: 3em;
+      }
+      button {
+        font-size: 1.1em;
+        padding: 12px 24px;
+      }
     }
   </style>
 </head>
 <body>
+  <h1>🕋 Zikir ve Dua Sayacı</h1>
+  <div id="counter">0</div>
+  <button class="btn-count" onclick="increaseCount()">Dua Okudum</button>
+  <button class="btn-reset" onclick="manualReset()">Yenile</button>
 
-  <h1>🕋 Erol Abim Dua Sayacı</h1>
-  <p id="counter">0</p>
-  <button onclick="increaseCount()">Dua Okudum</button>
+  <div class="dualar">
+    <h2>🏘️ Hastalıklara Şifa Olan Dualar</h2>
+    <div class="dua">
+      <p class="arabic">أَذْهِبِ الْبَاسَ رَبَّ النَّاسِ...
+      </p>
+      <p class="meaning">Ey insanların Rabbi! Bu hastalığı gider, şifa ver...</p>
+      <p>📖 (Buharî, Tıb 37)</p>
+    </div>
+
+    <div class="dua">
+      <p class="arabic">اللَهُمَّ رَبَّ النَّاسِ...
+      </p>
+      <p class="meaning">Allah'ım! Ey insanların Rabbi! Bu hastalığı gider...</p>
+      <p>📖 (Tirmizi, Daavat 118)</p>
+    </div>
+
+    <div class="dua">
+      <p class="arabic">حَسْبُنَا اللهُ وَنِعْمَ الوَكِيلُ
+      </p>
+      <p class="meaning">Allah bize yeter. O ne güzel vekildir.</p>
+      <p>📖 (Âl-i İmrân, 3/173)</p>
+    </div>
+  </div>
 
   <script>
-    let count = 0;
+    let count = parseInt(localStorage.getItem('count') || '0');
+    document.getElementById("counter").textContent = count;
 
     function increaseCount() {
       count++;
       document.getElementById("counter").textContent = count;
+      localStorage.setItem('count', count);
+
+      if (count === 100) {
+        alert("Allah okuduğun duaları kabul etsin.\nErol abim iyi olacak ınşallah.");
+      }
+    }
+
+    function manualReset() {
+      count = 0;
+      document.getElementById("counter").textContent = count;
+      localStorage.setItem('count', count);
     }
   </script>
-
 </body>
 </html>
