@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title> Erol Abim Dua Sayacı</title>
+  <style>
+    body {
+      font-family: Arial;
+      text-align: center;
+      padding-top: 100px;
+      background-color: #f0f8ff;
+    }
+    h1 {
+      font-size: 3em;
+    }
+    button {
+      font-size: 2em;
+      padding: 20px 40px;
+      margin-top: 30px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 15px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    p {
+      font-size: 2em;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🕋 Erol Abim Dua Sayacı</h1>
+  <p id="counter">0</p>
+  <button onclick="increaseCount()">Dua Okudum</button>
+
+  <script>
+    let count = 0;
+
+    function increaseCount() {
+      count++;
+      document.getElementById("counter").textContent = count;
+    }
+  </script>
+
+</body>
+</html>
